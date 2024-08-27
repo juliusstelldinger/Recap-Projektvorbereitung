@@ -1,5 +1,5 @@
 .mainContainer {
-  width: 100%;
-  background-color: var(--bg-color);
+  width: 100vw;
   min-height: 100px;
+  background-color: blueviolet;
 }

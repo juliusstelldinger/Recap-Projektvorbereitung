@@ -1,9 +1,17 @@
+import ReceipiesRequests from "../../api/v1/receipes/ReceipiesRequests";
+import ReceipeContext from "../../contexts/receipe-context/ReceipeContext";
 import AppData from "../../utils/AppData";
 import styles from "./HomeScreen.module.css";
 import ReceipeItem from "./receipe-item";
+import { useContext, useEffect, useState } from "react";
 
 function HomeScreen() {
-  const receipes = AppData.AllExampleReceipes;
+  const { receipes, fetchAllReceipeItems } = useContext(ReceipeContext);
+
+  useEffect(() => {
+    fetchAllReceipeItems();
+  }, []);
+
   return (
     <div className={styles.mainContainer}>
       Home

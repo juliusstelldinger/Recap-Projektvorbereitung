@@ -63,3 +63,14 @@ h1 {
 ## Aus der Vorlesung
 
 - Einfach Webseite mit Create React App erstellen `npx create-react-app <my-app-name>`
+
+### SEO
+
+- [Meta Tags ausfüllen](https://gist.github.com/whitingx/3840905)
+- Bei Google Webseite hinterlegen
+- Keywords so genau wie möglich auf Zielgruppe appassen
+- Performance der Webseite berücksichtigen
+- TLD --> Ist keyword in Domain Name enthalten
+- Robots.txt Datei anpassen
+- [Google Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)
+- Verlinkung auf anderen Webseite auf eure Webseite

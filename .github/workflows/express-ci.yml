@@ -21,4 +21,8 @@ jobs:
 
       - name: Prettier
         run: |
-          ls && cd 02-backend && npm run prettier
+          cd 02-backend && npm run prettier
+
+      - name: ESLint
+        run: |
+          cd 02-backend && npm run lint

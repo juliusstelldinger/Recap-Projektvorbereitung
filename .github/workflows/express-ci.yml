@@ -17,11 +17,11 @@ jobs:
 
       - name: Navigate to Backend directory
         run: |
-          ls &&b cd 02-backend
+          ls && cd 02-backend
 
       - name: Install dependencies
         run: |
-          npm ci
+          ls && npm ci
 
       - name: Prettier
         run: |

@@ -28,8 +28,6 @@ const ExampleReceipe2 = {
 
 const AllExampleReceipes = [ExampleReceipe1, ExampleReceipe2, ExampleReceipe2];
 
-AllExampleReceipes.map((mvalue) => {});
-
 const ExampleUserData = {
   id: 1,
   email: "dagobert@gmail.com",

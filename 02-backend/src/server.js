@@ -1,6 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const { StatusCodes } = require("http-status-codes");
 const cors = require("cors");
 const AppRouter = require("./routes");
 

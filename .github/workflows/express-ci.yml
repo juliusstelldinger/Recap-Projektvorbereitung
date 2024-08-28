@@ -26,3 +26,7 @@ jobs:
       - name: ESLint
         run: |
           cd 02-backend && npm run lint
+
+      - name: Testing
+        run: |
+          cd 02-backend && npm run test

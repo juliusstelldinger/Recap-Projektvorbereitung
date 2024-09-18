@@ -44,22 +44,7 @@ jobs:
         run: terraform apply -auto-approve
         working-directory: 04-iac/terraform
 
-  # ansible:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v4
-        
-  #     - name: Set up SSH
-  #       uses: webfactory/ssh-agent@v0.5.3
-  #       with:
-  #         ssh-private-key: ${{ secrets.SSH_KEY }}
-
-  #     - name: Run Ansible Playbook
-  #       run: ansible-playbook -i inventory.ini docker-playbook.yml
-  #       working-directory: 05-ansible/ansible
-
-  deploy:
+  ansible:
     runs-on: ubuntu-latest
 
     steps:

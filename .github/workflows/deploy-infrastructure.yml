@@ -3,8 +3,7 @@ name: Deploy Infrastructure
 on: workflow_dispatch
 
 jobs:
-  terraform:
-    name: "Terraform Apply"
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -44,24 +43,17 @@ jobs:
         run: terraform apply -auto-approve
         working-directory: 04-iac/terraform
 
-  ansible:
-    runs-on: ubuntu-latest
+      - name: Create SSH key file
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > /tmp/ssh_key && chmod 400 /tmp/ssh_key
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Run Ansible Playbook
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: 'false'
+        run: |
+          export ANSIBLE_PRIVATE_KEY_FILE=/tmp/ssh_key
+          ansible-playbook -i inventory.ini docker-playbook.yml
+        working-directory: 05-ansible/ansible
 
-    - name: Create SSH key file
-      run: |
-        echo "${{ secrets.SSH_KEY }}" > /tmp/ssh_key && chmod 400 /tmp/ssh_key
-
-    - name: Run Ansible Playbook
-      env:
-        ANSIBLE_HOST_KEY_CHECKING: 'false'
-      run: |
-        export ANSIBLE_PRIVATE_KEY_FILE=/tmp/ssh_key
-        ansible-playbook -i inventory.ini docker-playbook.yml
-      working-directory: 05-ansible/ansible
-
-    - name: Clean up
-      run: rm /tmp/ssh_key
+      - name: Clean up
+        run: rm /tmp/ssh_key

@@ -43,3 +43,13 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
         working-directory: 04-iac/terraform
+
+  ansible:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: navigate to playbook
+        run: cd ./Recap-Projektvorbereitung/05-ansible/ansible/
+      - name: ansible GO
+        run: ansible-playbook -i inventory.ini --private-key <(echo -n '${{ secrets.ssh_key }}') docker-playbook.,yml

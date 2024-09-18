@@ -4,8 +4,8 @@
 data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
-    bucket = "techstarter-tom-iac"
-    key    = "ec2-example/vpc.tfstate"
+    bucket = "techstarter-julius-iac"
+    key    = "vpc/vpc.tfstate"
     region = var.aws_region
   }
 }

@@ -16,5 +16,5 @@ variable "instance_ami" {
 
 variable "key_pair_id" {
   description = "Id for AWS Key Pair"
-  default     = "tomschiffmann-ec2-sandbox"
+  default     = "my-key"
 }

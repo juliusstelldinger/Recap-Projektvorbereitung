@@ -56,5 +56,5 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: Run Ansible Playbook
-        run: ansible-playbook -i inventory.ini playbook.yml
+        run: ansible-playbook -i inventory.ini docker-playbook.yml
         working-directory: 05-ansible/ansible

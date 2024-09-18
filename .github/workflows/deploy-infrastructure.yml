@@ -49,7 +49,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: navigate to playbook
-        run: cd ./Recap-Projektvorbereitung/05-ansible/ansible/
+
       - name: ansible GO
-        run: ansible-playbook -i inventory.ini --private-key <(echo -n '${{ secrets.ssh_key }}') docker-playbook.,yml
+        run: ansible-playbook -i inventory.ini --private-key <(echo -n '${{ secrets.ssh_key }}') docker-playbook.yml
+        working-directory: 05-ansible/ansible

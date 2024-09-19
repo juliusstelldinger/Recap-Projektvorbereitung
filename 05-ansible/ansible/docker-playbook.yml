@@ -43,3 +43,35 @@
         name: ubuntu
         groups: docker
         append: yes
+
+- name: Install Nodejs; clone and start app
+  hosts: all
+  gather_facts: yes
+  become: yes
+  vars:
+    NODEJS_VERSION: "8"
+  tasks:
+    - name: Install the nodejs
+      apt:
+        name: nodejs
+
+    - name: Install the nodejs
+      apt:
+        name: npm
+
+    - name: Git checkout
+      ansible.builtin.git:
+        repo: 'https://github.com/juliusstelldinger/Recap-Projektvorbereitung.git'
+        dest: /home/ubuntu/Recap-Projektvorbereitung/
+
+    - name: ls
+      ansible.builtin.command: ls /home/ubuntu/
+
+    - name: Install packages based on package.json.
+      community.general.npm:
+        path: /home/ubuntu/Recap-Projektvorbereitung/02-backend-mini/
+
+    - name: npm start
+      ansible.builtin.command:
+        chdir: /home/ubuntu/Recap-Projektvorbereitung/02-backend-mini/
+        cmd: npm run dev

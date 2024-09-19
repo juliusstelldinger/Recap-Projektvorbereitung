@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-const { PORT } = 5050;
+const PORT = 5050;
 
 app.get("/", function (req, res) {
   res.send("Hello World!!?");
@@ -11,4 +11,6 @@ app.get("/test", function (req, res) {
   res.send("Hello Test!!?");
 });
 
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`App has launched successfully on port ${PORT}`);
+});

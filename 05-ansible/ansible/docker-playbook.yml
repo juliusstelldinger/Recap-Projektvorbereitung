@@ -71,7 +71,14 @@
       community.general.npm:
         path: /home/ubuntu/Recap-Projektvorbereitung/02-backend-mini/
 
-    - name: npm start
-      ansible.builtin.command:
-        chdir: /home/ubuntu/Recap-Projektvorbereitung/02-backend-mini/
-        cmd: npm run dev
+    - name: "Install forever (to run Node.js app)."
+      npm: name=forever global=yes state=present
+
+    - name: "Check list of Node.js apps running."
+      command: forever list
+      register: forever_list
+      changed_when: false
+
+    - name: "Start example Node.js app."
+      command: forever start /home/ubuntu/Recap-Projektvorbereitung/02-backend-mini/index.js
+      when: "forever_list.stdout.find('/home/ubuntu/Recap-Projektvorbereitung/02-backend-mini/index.js') == -1"
